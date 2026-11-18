@@ -159,6 +159,7 @@ NTSTATUS __cdecl FilterAcpi(PSYSTEM_FIRMWARE_TABLE_INFORMATION info) {
 NTSTATUS __cdecl FilterRsmb(PSYSTEM_FIRMWARE_TABLE_INFORMATION info) {
 	const NTSTATUS status = g_original_rsmb_handler(info);
 	if (NT_SUCCESS(status) && info && info->Action == 1) {
+		ReplaceInPlace(info->TableBuffer, info->TableBufferLength, "VMware, Inc.", "Gigabyte Co.", 12);
 		ReplaceInPlace(info->TableBuffer, info->TableBufferLength, "VMware", "System", 6);
 		ReplaceInPlace(info->TableBuffer, info->TableBufferLength, "VMWARE", "SYSTEM", 6);
 	}
