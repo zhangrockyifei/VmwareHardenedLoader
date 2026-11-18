@@ -148,6 +148,7 @@ NTSTATUS __cdecl FilterAcpi(PSYSTEM_FIRMWARE_TABLE_INFORMATION info) {
 			RemoveEnumerationEntry(info, "WAET");
 		} else if (info->Action == 1) {
 			ReplaceInPlace(info->TableBuffer, info->TableBufferLength, "VMware", "System", 6);
+			ReplaceInPlace(info->TableBuffer, info->TableBufferLength, "PTLTD", "GIGAB", 5);
 			ReplaceInPlace(info->TableBuffer, info->TableBufferLength, "VMWARE", "SYSTEM", 6);
 			RecomputeAcpiChecksum(info->TableBuffer, info->TableBufferLength);
 		}
