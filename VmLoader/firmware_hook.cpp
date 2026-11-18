@@ -128,6 +128,7 @@ void RecomputeAcpiChecksum(_Inout_ PVOID Buffer, _In_ ULONG BufferLength) {
 NTSTATUS __cdecl FilterFirm(PSYSTEM_FIRMWARE_TABLE_INFORMATION info) {
 	const NTSTATUS status = g_original_firm_handler(info);
 	if (NT_SUCCESS(status) && info && info->Action == 1) {
+		ReplaceInPlace(info->TableBuffer, info->TableBufferLength, "VMware, Inc.", "Gigabyte Co.", 12);
 		ReplaceInPlace(info->TableBuffer, info->TableBufferLength, "VMware", "System", 6);
 		ReplaceInPlace(info->TableBuffer, info->TableBufferLength, "Virtual", "Generic", 7);
 	}
