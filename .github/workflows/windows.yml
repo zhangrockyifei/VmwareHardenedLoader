@@ -6,6 +6,9 @@ on:
     tags:
       - "v*"
 
+env:
+  VMLOADER_KPHDYN_URL: https://github.com/HLND2T/kphtools/releases/download/nightly/kphdyn.xml
+
 permissions:
   contents: read
 
